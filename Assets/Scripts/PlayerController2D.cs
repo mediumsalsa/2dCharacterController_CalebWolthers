@@ -20,9 +20,10 @@ public class PlayerController2D : MonoBehaviour
         float hInput = Input.GetAxisRaw("Horizontal");
         float vInput = Input.GetAxisRaw("Vertical");
 
-        Vector2 movement = new Vector2(hInput, vInput).normalized;
+        Vector2 movement = new Vector2(hInput, vInput);
+        movement.Normalize();
 
-        rb.position += movement * movementSpeed * Time.deltaTime;
+        rb.MovePosition(rb.position + movement * movementSpeed * Time.fixedDeltaTime);
 
     }
 }
